@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Survey Form</title>
+        <link href='./index.css' rel='stylesheet'/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body onload="click()" >
+      <h3> Survey Form </h3>
+      <div class='container' id='cont'>
+          <form>
+           <label id='demo'></label>
+           <br/>
+           <label for='Email'>Email</label>
+           <input type='text' placeholder="Your Email" id='Email' name='email' />
+           <label id='emailv' style="visibility: hidden">Email Cannot be Empty</label>
+           <br/>
+           <label for='Age'>Age</label>
+           <input type='number' placeholder="Age" min='18' max='80' id='Age' name='age'/>
+           <br/>
+           <label for='Qualification'>Qualification</label>
+           <input type='text' placeholder="Your Qualification" id='Qualification' name='Qualification' />
+           <label id='Qualification1' style="visibility: hidden">Qualification Cannot be Empty</label>
+           <br/>
+           <label for='professions'>Professions</label>
+           <select name='profession' id='profession' >
+               <option value="Software">Software</option>
+               <option value="Accounts">Accounts</option>
+               <option value="Medical">Medical</option>
+               <option value="Business">Business</option>
+               <option value="Others">Others</option>
+           </select>
+           <br/>
+           <label for='hobbies'>Hobbie</label>
+           <input type='text' id='hobbies' placeholder="Your Hobbies" name='hobbies' />
+           <label id='hobbies1' style="visibility: hidden">hobbie Cannot be Empty</label>
+           <br/>
+           <label for='flim'>Your Favorite Flim</label>
+           <input type='text' id='flim' placeholder="Your Favorite Flim" name='flim'/>
+           <label id='flim1' style="visibility: hidden">Flim Cannot be Empty</label>
+           <br/>
+            <label for='food'>Your Favorite Food</label>
+            <input type='food' id='food' placeholder="Your Favorite Food" name='food'/>
+            <label id='food1' style="visibility: hidden">Food Cannot be Empty</label>
+            <br/>
+            <label for='country' >Country</label>
+            <input type="checkbox" id="country" onclick="location1()">
+            <p>Note:- Please Enable Location for this </p>
+            <br/>
+            <textarea rows="4" cols="80" placeholder="Please Provide the Feedback" name='Feedback' id='feedback' maxlength="150"></textarea>
+          </form>
+            <button onclick="submit()" >Submit</button>
+      </div>
+      <script type='text/javascript'>
+          function click (){
+              const ntn = prompt("Please Enter Your Name",)
+              if(ntn.length == 0){
+                window.location.reload()
+              }else{
+                document.getElementById('demo').innerHTML = `Hi ${ntn} welcome to the survey please answer the survey correctly`
+                document.getElementById('cont').style.visibility= 'visible'
+              } 
+          }
+          
+    function location1(){
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+
+function showPosition(position) {
+ "Latitude: " + position.coords.latitude +
+  "<br>Longitude: " + position.coords.longitude;
+  console.log(position.coords.latitude)
+  console.log(position.coords.longitude)
+}
+          }
+        function submit (){
+          const email = document.getElementById('Email')
+          const age = document.getElementById('Age')
+          const qua = document.getElementById('Qualification')
+          const pro = document.getElementById('profession')
+          const hobiie = document.getElementById('hobbies')
+          const flim = document.getElementById('flim')
+          const food = document.getElementById('food')
+          const feedback = document.getElementById('feedback')
+           if(email.value.trim() == ''){
+             Email.style.border = '2px solid red'
+             document.getElementById('emailv').style.visibility = 'visible'
+             return false
+           }else if(qua.value.trim() == ''){
+            Qualification.style.border = '2px solid red'
+            document.getElementById('Qualification1').style.visibility = 'visible'
+            return false
+           }else if(hobiie.value.trim()== ''){
+             hobbies.style.border = '2px solid red'
+             document.getElementById('hobbies1').style.visibility = 'visible'
+             return false
+           }else if(flim.value.trim()== ''){
+             flim.style.border = '2px solid red'
+             document.getElementById('flim1').style.visibility = 'visible'
+             return false
+           }else if(food.value.trim()== ''){
+             food.style.border = '2px solid red'
+             document.getElementById('food1').style.visibility = 'visible'
+             return false
+           }else{
+           var _Email = email.value
+           var _Age = age.value
+           var _Qualification = qua.value
+           var _Profession = pro.value
+           var _Hobbie = hobiie.value
+           var _Flim = flim.value
+           var _Food = food.value
+           var _FeedBack = feedback.value
+           }
+          const formData = {
+            _Email,_Age,_Qualification,_Profession,_Hobbie,_Flim,_Food,_FeedBack
+          }
+           console.log(formData)
+        }
+      </script>
+    </body>
+</html>
